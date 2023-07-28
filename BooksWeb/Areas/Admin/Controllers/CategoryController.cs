@@ -6,15 +6,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BooksWeb.Areas.Admin.Controllers
 {
-        [Area("Admin")]
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly IUnitOfwork _unitOfWork;
-        public CategoryController(IUnitOfwork unitOfwork)
+        private readonly IUnitOfWork _unitOfWork;
+        public CategoryController(IUnitOfWork unitOfwork)
         {
             _unitOfWork = unitOfwork;
         }
-
 
         public IActionResult Index()
         {
@@ -22,7 +21,6 @@ namespace BooksWeb.Areas.Admin.Controllers
 
             return View(objCategoryList);
         }
-
 
         public IActionResult Create()
         {
