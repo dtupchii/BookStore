@@ -113,56 +113,6 @@ namespace BooksWeb.Areas.Admin.Controllers
             }
         }
 
-
-        //public IActionResult Edit(int? id)
-        //{
-        //    if (id is null || id == 0)
-        //        return NotFound();
-        //    Product productFromDB = _unitOfWork.Product.Get(u=>u.Id==id);
-        //    if (productFromDB == null)
-        //        return NotFound();
-        //    return View(productFromDB);
-        //}
-        //[HttpPost]
-        //public IActionResult Edit(Product product)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        product.Title = Correct(product.Title);
-
-        //        _unitOfWork.Product.Update(product);
-        //        _unitOfWork.Save();
-        //        TempData["success"] = "Product updated successfully";
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View();
-        //}
-
-
-        //public IActionResult Delete(int? id)
-        //{
-        //    if (id is null || id == 0)
-        //        return NotFound();
-        //    Product productFromDB = _unitOfWork.Product.Get(u => u.Id == id);
-
-        //    if (productFromDB == null)
-        //        return NotFound();
-
-        //    return View(productFromDB);
-        //}
-        //[HttpPost, ActionName("Delete")]
-        //public IActionResult DeletePOST(int? id) 
-        //{
-        //    Product product = _unitOfWork.Product.Get(u => u.Id == id);
-        //    if (product == null)
-        //        return NotFound();
-        //    _unitOfWork.Product.Remove(product);
-        //    _unitOfWork.Save();
-        //    TempData["success"] = "Product deleted successfully";
-        //    return RedirectToAction("Index");
-        //}
-
-
         private string Correct (string title)
         {
             string newTitle = "";

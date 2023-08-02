@@ -15,6 +15,7 @@ namespace Books.DataAccess.Data
         }
 
         public DbSet<Product> Products { get; set; }
+        public DbSet<Company> Companies { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating (ModelBuilder modelBuilder)
@@ -113,6 +114,48 @@ namespace Books.DataAccess.Data
                     ImageUrl = ""
                 }
                 );
+
+            modelBuilder.Entity<Company>().HasData(
+                new Company
+                {
+                    Id = 1,
+                    Name = "BookStore",
+                    StreetAddress = "231 Lourbes str",
+                    City = "Waterloo",
+                    State = "ON",
+                    PostalCode = "N2L 1B9",
+                    PhoneNumber = "548-256-0889"
+                },
+                new Company
+                {
+                    Id = 2,
+                    Name = "Knygarnia",
+                    StreetAddress = "167 Povitroflotskii ave",
+                    City = "Kyiv",
+                    State = "KY",
+                    PostalCode = "03037",
+                    PhoneNumber = "093-738-8638"
+                },
+                new Company
+                {
+                    Id = 3,
+                    Name = "Yakaboo",
+                    StreetAddress = "1 Khreschatyk str",
+                    City = "Kyiv",
+                    State = "KY",
+                    PostalCode = "01782",
+                    PhoneNumber = "093-367-8219"
+                },
+                new Company
+                {
+                    Id = 4,
+                    Name = "ReweBook",
+                    StreetAddress = "88 Emser str",
+                    City = "Berlin",
+                    State = "BE",
+                    PostalCode = "12051",
+                    PhoneNumber = "151-7282-9098"
+                }) ;
         }
     }
 }

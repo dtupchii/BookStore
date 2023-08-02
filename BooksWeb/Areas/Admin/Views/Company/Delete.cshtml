@@ -1,0 +1,56 @@
+﻿@model Company
+
+<div class="card border-1 my-4">
+    <div class="card-header bg-secondary bg-gradient m-lg-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Delete Company</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-4">
+        <form method="post" class="row">
+            <input asp-for="Id" hidden />
+            <div class="p-3">
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="Name" disabled class="form-control border shadow" />
+                    <label asp-for="Name" class="ms-2"></label>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="PhoneNumber" disabled class="form-control border shadow" />
+                    <label asp-for="PhoneNumber" class="ms-2"></label>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="StreetAddress" disabled class="form-control border shadow" />
+                    <label asp-for="StreetAddress" class="ms-2"></label>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="City" disabled class="form-control border shadow" />
+                    <label asp-for="City" class="ms-2"></label>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="State" disabled class="form-control border shadow" />
+                    <label asp-for="State" class="ms-2"></label>
+                </div>
+
+                <div class="form-floating py-2 col-12">
+                    <input asp-for="PostalCode" disabled class="form-control border shadow" />
+                    <label asp-for="PostalCode" class="ms-2"></label>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-danger form-control">Delete Item</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-controller="Company" asp-action="Index" class="btn btn-outline-secondary border form-control">Back To List</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
