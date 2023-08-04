@@ -1,7 +1,9 @@
 ﻿using Books.DataAccess.Repository.IRepository;
 using Books.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace BooksWeb.Areas.Customer.Controllers
 {
@@ -23,17 +25,43 @@ namespace BooksWeb.Areas.Customer.Controllers
             return View(productList);
         }
 
-        public IActionResult Details(int? productId)
+        public IActionResult Details(int productId)
         {
-            if (productId is null || productId == 0)
-                return NotFound();
-
-            var product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category");
-            if (product == null) 
+            ShoppingCart cart = new()
             {
-                return NotFound();
+                Product = _unitOfWork.Product.Get(u => u.Id == productId, includeProperties: "Category"),
+                Count = 1,
+                ProductId = productId
+            };
+            
+            return View(cart);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public IActionResult Details(ShoppingCart cart)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+            cart.ApplicationUserId = userId;
+
+            ShoppingCart cartFromDB = _unitOfWork.ShoppingCart.Get(u => u.ApplicationUserId == userId &&
+            u.ProductId == cart.ProductId);
+
+            if (cartFromDB != null)
+            {
+                cartFromDB.Count += cart.Count;
+                _unitOfWork.ShoppingCart.Update(cartFromDB);
             }
-            return View(product);
+            else
+            {
+                _unitOfWork.ShoppingCart.Add(cart);
+            }
+            TempData["success"] = "Cart has been updated";
+
+            _unitOfWork.Save();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public IActionResult Privacy()
