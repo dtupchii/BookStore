@@ -11,12 +11,19 @@ namespace Books.DataAccess.Data
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options) 
         {
+            // Get the ObjectContext related to this DbContext
+            //var obj = this as IObjectContextAdapter;
+            //var objectContext = obj.ObjectContext;
 
+            // Sets the command timeout for all the commands
+            //objectContext.CommandTimeout = 0;
         }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<OrderHeader> OrderHeaders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         protected override void OnModelCreating (ModelBuilder modelBuilder)
