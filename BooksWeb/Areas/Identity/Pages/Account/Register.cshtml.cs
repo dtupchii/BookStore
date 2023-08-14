@@ -122,8 +122,7 @@ namespace BooksWeb.Areas.Identity.Pages.Account
             public string? PostalCode { get; set; }
             public string? PhoneNumber { get; set; }
             public int? CompanyId { get; set; }
-
-
+            [ValidateNever]
             public IEnumerable<SelectListItem> CompanyList { get; set; }
         }
 
