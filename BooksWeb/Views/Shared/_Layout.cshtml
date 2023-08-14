@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -27,7 +30,7 @@
                         </li>
 
                         @if (User.IsInRole(SD.Role_Admin) || User.IsInRole(SD.Role_Customer) || User.IsInRole(SD.Role_Company) || User.IsInRole(SD.Role_Employee))
-                                    {
+                        {
                             <li class="nav-item">
                                 <a class="nav-link" asp-area="Admin" asp-controller="Order" asp-action="Index">Orders</a>
                             </li>
@@ -55,7 +58,7 @@
                         }
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Customer" asp-controller="Cart" asp-action="Index">
-                                <i class="bi bi-cart"></i> &nbsp;
+                                @await Component.InvokeAsync("ShoppingCart")
                             </a>
                         </li>
                     </ul>
