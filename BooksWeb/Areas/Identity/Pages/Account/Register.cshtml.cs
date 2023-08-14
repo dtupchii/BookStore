@@ -211,8 +211,15 @@ namespace BooksWeb.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        if (!User.IsInRole(SD.Role_Admin))
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+                        else
+                        {
+                            TempData["success"] = "New user was created successully";
+                        }
                     }
                 }
                 foreach (var error in result.Errors)
