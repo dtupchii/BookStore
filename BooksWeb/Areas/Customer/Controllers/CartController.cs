@@ -131,7 +131,7 @@ namespace BooksWeb.Areas.Customer.Controllers
             {
                 //it is a regular user and we need to capture payment
                 //stripe logic
-                var domain = "https://localhost:7032/";
+                var domain = Request.Scheme + "://" + Request.Host.Value + "/";
                 var options = new SessionCreateOptions
                 {
                     SuccessUrl = domain + $"Customer/Cart/OrderConfirmation?orderId={ShoppingCartVM.OrderHeader.Id}",
