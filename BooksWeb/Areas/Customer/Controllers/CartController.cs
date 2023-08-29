@@ -33,7 +33,7 @@ namespace BooksWeb.Areas.Customer.Controllers
             ShoppingCartVM = new()
             {
                 ShoppingCartList = _unitOfWork.ShoppingCart.GetAll(u => u.ApplicationUserId == userId,
-                includeProperties: "Product"),
+                        includeProperties: "Product"),
                 OrderHeader = new()
             };
 

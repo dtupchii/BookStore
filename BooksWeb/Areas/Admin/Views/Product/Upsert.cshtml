@@ -11,7 +11,7 @@
     <div class="card-body pt-4">
         <form method="post" class="row" enctype="multipart/form-data">
             <input asp-for="Product.Id" hidden />
-            <input asp-for="Product.ImageUrl" hidden />
+            @*<input asp-for="Product.ImageUrl" hidden />*@
             <div class="row">
                 <div class="col-10">
                     <div class="p-3">
@@ -72,7 +72,7 @@
 
                         <div class="form-floating py-2 col-12">
                             <input type="file" name="file" class="form-control border shadow" />
-                            <label asp-for="Product.ImageUrl" class="ms-2"></label>
+                            @*<label asp-for="Product.ImageUrl" class="ms-2"></label>*@
                         </div>
 
                         @* <div asp-validation-summary="ModelOnly"></div>*@
@@ -95,8 +95,8 @@
                     </div>
                 </div>
                 <div class="col-2">
-                    <img src="@Model.Product.ImageUrl" width="100%"
-                        style="border-radius:5px; border:1px solid #bbb9b9"/>
+                   @* <img src="@Model.Product.ImageUrl" width="100%"
+                        style="border-radius:5px; border:1px solid #bbb9b9"/>*@
                 </div>
             </div>
         </form>
