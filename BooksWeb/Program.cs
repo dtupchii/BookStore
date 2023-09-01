@@ -35,7 +35,14 @@ builder.Services.AddAuthentication().AddFacebook(
     option =>
     {
         option.AppId = "226723333693550";
-        option.AppSecret = "";
+        option.AppSecret = "366827f2f4680c799f0ed7c8d3a2366e";
+    });
+
+builder.Services.AddAuthentication().AddMicrosoftAccount(
+    option =>
+    {
+        option.ClientId = "bc50ffec-226c-485e-955b-a92150b400f4";
+        option.ClientSecret = "qxh8Q~jloZ4XyUunf6SiiN-Hb03i8hgPzpYglbL7";
     });
 
 builder.Services.AddDistributedMemoryCache();
